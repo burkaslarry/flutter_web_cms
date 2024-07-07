@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'login/login.dart';
-import 'dashboard/dashboard.dart';
+import 'package:my_cms_app/src/dashboard/dashboard.dart';
+import 'package:my_cms_app/src/login/login.dart';
 
 void main() {
   runApp(const MyApp());

@@ -4,4 +4,7 @@ import 'package:flutter/material.dart';
 class MenuItem {
   String title = "";
   IconData icon = Icons.abc;
+
+  MenuItem({required this.title, required this.icon});
+
 }
