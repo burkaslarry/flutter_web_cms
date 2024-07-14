@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../login/login.dart';
 import '../model/user.dart';
 import 'components/mainpage/coursecontentpage.dart';
+import 'components/mainpage/itempage.dart';
 import 'components/mainpage/reportpage.dart';
 import 'components/mainpage/studentpage.dart';
 import 'components/menu/leftmenu.dart';
@@ -19,6 +20,7 @@ class _AdminDashboardState extends State<Dashboard> {
   static List<MenuItem> menuList = [
     MenuItem(title: 'Course Material', icon: Icons.menu_book),
     MenuItem(title: 'Student Enrollment', icon: Icons.people),
+    MenuItem(title: 'Items', icon: Icons.book),
     MenuItem(title: 'Reports', icon: Icons.insert_chart),
   ];
 
@@ -27,6 +29,7 @@ class _AdminDashboardState extends State<Dashboard> {
   final List<Widget> _contentAreas = [
     CourseContentArea(),
     StudentEnrollmentArea(),
+    ItemPage(),
     ReportArea(),
   ];
 
