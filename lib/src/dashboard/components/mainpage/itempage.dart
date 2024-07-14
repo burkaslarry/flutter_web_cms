@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:dio/dio.dart';
 import 'dart:io';
 import 'dart:convert';
 
@@ -10,14 +9,16 @@ class ItemPage extends StatefulWidget {
 }
 
 class _ItemPageState extends State<ItemPage> {
-
   Future<List<dynamic>> fetchItems() async {
     final httpClient = HttpClient();
     try {
+      print("Attempting to connect...");
       final request = await httpClient.getUrl(
           Uri.parse('https://python-mysql-http.onrender.com/items?limit=5&offset=0')
       );
+      print("Request created, sending...");
       final response = await request.close();
+      print("Response received. Status code: ${response.statusCode}");
 
       if (response.statusCode == HttpStatus.ok) {
         final jsonString = await response.transform(utf8.decoder).join();
@@ -29,12 +30,6 @@ class _ItemPageState extends State<ItemPage> {
       print('SocketException: ${e.message}');
       print('OS Error: ${e.osError}');
       rethrow;
-    } on HttpException catch (e) {
-      print('HttpException: ${e.message}');
-      rethrow;
-    } on FormatException catch (e) {
-      print('FormatException: ${e.message}');
-      rethrow;
     } catch (e) {
       print('Unexpected error: $e');
       rethrow;
@@ -42,6 +37,8 @@ class _ItemPageState extends State<ItemPage> {
       httpClient.close();
     }
   }
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
